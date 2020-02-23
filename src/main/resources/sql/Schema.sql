@@ -40,6 +40,7 @@ CREATE TABLE Menu (
   PRIMARY KEY (menu_item_id),
   FOREIGN KEY (dish_id) REFERENCES Dish (id)
 );
+--Initial schema
 
 
 
