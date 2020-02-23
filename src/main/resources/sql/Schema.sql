@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS Dish CASCADE;
+DROP TABLE IF EXISTS Menu CASCADE;
 DROP TABLE IF EXISTS Ingredient CASCADE;
 DROP TABLE IF EXISTS Recipe CASCADE;
-DROP TABLE IF EXISTS Menu CASCADE;
 
 
 
@@ -15,7 +15,7 @@ CREATE TABLE Dish (
 CREATE TABLE Ingredient (
   id					SERIAL,
   name					VARCHAR NOT NULL,
-  unit_measured_in		VARCHAR,
+  stock_unit			VARCHAR,
   category				VARCHAR,
   PRIMARY KEY (id)
 );
@@ -25,6 +25,7 @@ CREATE TABLE Recipe (
   dish_id				SMALLINT,
   ingredient_id			SMALLINT,
   ingrediant_quantity	SMALLINT,
+  quantity_unit			VARCHAR,
   PRIMARY KEY (id),
   FOREIGN KEY (ingredient_id) REFERENCES Ingredient (id),
   FOREIGN KEY (dish_id) REFERENCES Dish (id)
