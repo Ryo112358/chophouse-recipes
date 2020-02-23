@@ -1,46 +1,38 @@
-DROP TABLE IF EXISTS Dish CASCADE;
 DROP TABLE IF EXISTS Menu CASCADE;
 DROP TABLE IF EXISTS Ingredient CASCADE;
 DROP TABLE IF EXISTS Recipe CASCADE;
 
 
 
-CREATE TABLE Dish (
-  id					SMALLSERIAL,
-  name					VARCHAR,
-  price 				NUMERIC(5,2),
-  PRIMARY KEY (id)
+CREATE TABLE Menu (
+  dish_id					SMALLSERIAL,
+  dish_name					TEXT NOT NULL,
+  dish_description			TEXT,
+  menu_item_id				VARCHAR(5) UNIQUE,
+  category					TEXT NOT NULL,
+  subcategory				TEXT,
+  price_rupees				NUMERIC(4,0),
+  active					BOOLEAN NOT NULL DEFAULT TRUE,
+  PRIMARY KEY (dish_id)
 );
 
 CREATE TABLE Ingredient (
-  id					SERIAL,
-  name					VARCHAR NOT NULL,
-  stock_unit			VARCHAR,
-  category				VARCHAR,
+  id						SERIAL,
+  name						TEXT NOT NULL,
+  stock_measurement_unit	TEXT,
+  category					TEXT,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE Recipe (
-  id 					SERIAL,
-  dish_id				SMALLINT,
-  ingredient_id			SMALLINT,
-  ingrediant_quantity	SMALLINT,
-  quantity_unit			VARCHAR,
-  PRIMARY KEY (id),
+  dish_id					SMALLINT,
+  ingredient_id				INTEGER,
+  ingrediant_quantity		SMALLINT NOT NULL,
+  quantity_unit				VARCHAR NOT NULL,
+  PRIMARY KEY (dish_id, ingredient_id),
   FOREIGN KEY (ingredient_id) REFERENCES Ingredient (id),
-  FOREIGN KEY (dish_id) REFERENCES Dish (id)
+  FOREIGN KEY (dish_id) REFERENCES Menu (dish_id)
 );
-
-CREATE TABLE Menu (
-  menu_item_id			VARCHAR(5),
-  dish_id				SMALLINT NOT NULL,
-  dish_description		VARCHAR,
-  category				VARCHAR NOT NULL,
-  subcategory			VARCHAR,
-  PRIMARY KEY (menu_item_id),
-  FOREIGN KEY (dish_id) REFERENCES Dish (id)
-);
---Initial schema
 
 
 

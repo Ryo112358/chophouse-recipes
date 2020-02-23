@@ -1,9 +1,11 @@
 -- #-----------------------------------------------------------------------
--- # |                            DISH                                    |
+-- # |                            MENU                                    |
 -- #-----------------------------------------------------------------------
 
-INSERT INTO Dish (name, price) VALUES ('Palak Paneer', 8.99);
-INSERT INTO Dish (name, price) VALUES ('Punjabi Chicken', 11.99);
+INSERT INTO Menu (dish_name, menu_item_id, category)
+	VALUES ('Palak Paneer', 'V1', 'Vegetarian');
+INSERT INTO Menu (dish_name, menu_item_id, category, subcategory)
+	VALUES ('Punjabi Chicken', 'C1', 'Curry', 'Chicken');
 
 
 
@@ -14,12 +16,7 @@ INSERT INTO Dish (name, price) VALUES ('Punjabi Chicken', 11.99);
 
 
 
--- #-----------------------------------------------------------------------
--- # |                            MENU                                    |
--- #-----------------------------------------------------------------------
 
-INSERT INTO Menu (menu_item_id, dish_id, category) VALUES ('V1', 1, 'Vegetarian');
-INSERT INTO Menu (menu_item_id, dish_id, category, subcategory) VALUES ('C1', 2, 'Curry', 'Chicken');
 
 
 
