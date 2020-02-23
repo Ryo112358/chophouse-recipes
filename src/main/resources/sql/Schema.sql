@@ -18,7 +18,7 @@ CREATE TABLE Menu (
 
 CREATE TABLE Ingredient (
   id						SERIAL,
-  name						TEXT NOT NULL,
+  name						TEXT UNIQUE NOT NULL,
   stock_measurement_unit	TEXT,
   category					TEXT,
   PRIMARY KEY (id)
@@ -27,12 +27,11 @@ CREATE TABLE Ingredient (
 CREATE TABLE Recipe (
   dish_id					SMALLINT,
   ingredient_id				INTEGER,
-  ingrediant_quantity		SMALLINT NOT NULL,
-  quantity_unit				VARCHAR NOT NULL,
+  ingredient_quantity		NUMERIC(6,2) NOT NULL,
+  quantity_unit				TEXT NOT NULL,
   PRIMARY KEY (dish_id, ingredient_id),
   FOREIGN KEY (ingredient_id) REFERENCES Ingredient (id),
   FOREIGN KEY (dish_id) REFERENCES Menu (dish_id)
 );
-
 
 
