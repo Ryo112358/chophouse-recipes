@@ -11,7 +11,7 @@ CREATE TABLE Menu (
   menu_item_id				VARCHAR(5) UNIQUE,
   category					TEXT NOT NULL,
   subcategory				TEXT,
-  price_rupees				NUMERIC(4,0),
+  price_rupees				NUMERIC(4,0) DEFAULT 0,
   active					BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (dish_id)
 );
